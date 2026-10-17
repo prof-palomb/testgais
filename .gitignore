@@ -1,0 +1,19 @@
+# Dipendenze e build locale
+node_modules/
+dist/
+.npm/
+
+# File di configurazione del server di anteprima locale
+package.json
+package-lock.json
+bun.lock
+metadata.json
+vite.config.*
+tsconfig*.json
+.env*
+.aistudio/
+
+# File di sistema e log
+*.log
+.DS_Store
+Thumbs.db
