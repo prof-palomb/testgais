@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="page-galleria">
+    <header class="galleria-header">
+      <a href="index.html" class="nav-back">Home</a>
+      <h1 class="galleria-title">Galleria</h1>
+      <span class="galleria-subtitle">Selezione Materica</span>
+    </header>
+
+    <main class="galleria-container">
+      <div class="gallery-grid">
+        <!-- Opera 1 -->
+        <article class="gallery-item" onclick="openLightbox('images/arch.jpg', '01. Luce e Geometria', 'Studio di ombre e volumi in pietra calcarea naturale.')">
+          <div class="image-wrapper">
+            <img src="images/arch.jpg" alt="Architettura e luce" loading="lazy">
+          </div>
+          <div class="item-meta">
+            <span class="item-number">01</span>
+            <div class="item-text">
+              <h2 class="item-title">Luce e Geometria</h2>
+              <p class="item-desc">Studio di ombre e volumi in pietra naturale</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Opera 2 -->
+        <article class="gallery-item" onclick="openLightbox('images/sculpture.jpg', '02. Forma e Silenzio', 'Scultura in travertino poroso e marmo bianco levigato.')">
+          <div class="image-wrapper">
+            <img src="images/sculpture.jpg" alt="Scultura in marmo" loading="lazy">
+          </div>
+          <div class="item-meta">
+            <span class="item-number">02</span>
+            <div class="item-text">
+              <h2 class="item-title">Forma e Silenzio</h2>
+              <p class="item-desc">Scultura in travertino e marmo levigato</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Opera 3 -->
+        <article class="gallery-item" onclick="openLightbox('images/nature.jpg', '03. Ombra Botanica', 'Contrasto poetico di foglie d\'ulivo su muro rustico.')">
+          <div class="image-wrapper">
+            <img src="images/nature.jpg" alt="Ombra botanica su muro" loading="lazy">
+          </div>
+          <div class="item-meta">
+            <span class="item-number">03</span>
+            <div class="item-text">
+              <h2 class="item-title">Ombra Botanica</h2>
+              <p class="item-desc">Foglie d'ulivo su muro rustico materico</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Opera 4 -->
+        <article class="gallery-item" onclick="openLightbox('images/prism.jpg', '04. Spettro e Rifrazione', 'Fascio prismatico e riflessi di luce su carta di lino.')">
+          <div class="image-wrapper">
+            <img src="images/prism.jpg" alt="Rifrazione della luce attraverso un prisma" loading="lazy">
+          </div>
+          <div class="item-meta">
+            <span class="item-number">04</span>
+            <div class="item-text">
+              <h2 class="item-title">Spettro e Rifrazione</h2>
+              <p class="item-desc">Riflessi di luce prismatica su carta di lino</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <!-- Modal Lightbox per ingrandire le opere -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+      <div class="lightbox-content" onclick="event.stopPropagation()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox-caption">
+          <h3 id="lightbox-title"></h3>
+          <p id="lightbox-desc"></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function openLightbox(src, title, desc) {
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox-title').textContent = title;
+        document.getElementById('lightbox-desc').textContent = desc;
+        document.getElementById('lightbox').classList.add('active');
+      }
+
+      function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    </script>
+  </body>
+</html>

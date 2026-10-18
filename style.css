@@ -10,15 +10,26 @@ html, body {
   background-color: #fbfbfa;
   color: #1a1a1a;
   font-family: 'EB Garamond', Garamond, Georgia, serif;
-  overflow: hidden;
   user-select: none;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Home Page */
+body:not(.page-galleria) {
+  overflow: hidden;
 }
 
 main {
   width: 100vw;
   height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -68,4 +79,271 @@ main {
     background-position: 210% 0, 0 0;
     filter: drop-shadow(0 0 0px transparent);
   }
+}
+
+/* ==========================================================================
+   Pulsante Flat Oro Scuro Ramato / Ruggine (Home)
+   ========================================================================== */
+.btn-galleria {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3.2rem;
+  padding: 0.7rem 2.6rem;
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 9999px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  transform: none;
+
+  /* Colore flat oro scuro tendente al ramato/ruggine puro, senza texture */
+  background-color: #a85d2c;
+  color: #faf9f6;
+
+  /* Transizione pura di colore verso il neutro */
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* Hover: solo cambio colore verso il neutro (flat, nessun movimento, nessun rilievo) */
+.btn-galleria:hover {
+  background-color: #e5e0d6;
+  color: #1a1a1a;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-galleria:active {
+  background-color: #d8d3c8;
+  color: #1a1a1a;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   Stili Pagina Galleria (Versione originale ripristinata)
+   ========================================================================== */
+.page-galleria {
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.galleria-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.8rem 3rem;
+  background-color: rgba(251, 251, 250, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Ripristino link testuale pulito a sinistra */
+.nav-back {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: opacity 0.25s ease;
+}
+
+.nav-back:hover {
+  opacity: 0.5;
+}
+
+.galleria-title {
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Testo a destra in alto ripristinato */
+.galleria-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  font-style: italic;
+}
+
+.galleria-container {
+  width: 100%;
+  max-width: 1240px;
+  height: auto;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.5rem 3rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .galleria-header {
+    padding: 1.2rem 1.5rem;
+  }
+  .galleria-subtitle {
+    display: none;
+  }
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #eee;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.gallery-item:hover .image-wrapper img {
+  transform: scale(1.03);
+}
+
+.item-meta {
+  margin-top: 1.1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.item-number {
+  font-size: 0.95rem;
+  color: #888;
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.15rem;
+}
+
+.item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.item-title {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+}
+
+.item-desc {
+  font-size: 0.95rem;
+  color: #666;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+
+/* Modal Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgba(251, 251, 250, 0.96);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  padding: 2rem;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -3.5rem;
+  right: 0;
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.lightbox-close:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+}
+
+#lightbox-img {
+  width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.09);
+}
+
+.lightbox-caption {
+  margin-top: 1.4rem;
+  text-align: center;
+}
+
+#lightbox-title {
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+#lightbox-desc {
+  margin-top: 0.3rem;
+  font-size: 1.05rem;
+  color: #666;
+  font-style: italic;
 }
