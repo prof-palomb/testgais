@@ -84,6 +84,18 @@ main {
 /* ==========================================================================
    Pulsante Flat Oro Scuro Ramato / Ruggine (Home)
    ========================================================================== */
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3.2rem;
+}
+
+.actions .btn-galleria {
+  margin-top: 0;
+}
+
 .btn-galleria {
   display: inline-flex;
   align-items: center;
@@ -123,6 +135,208 @@ main {
   color: #1a1a1a;
   transform: none;
   box-shadow: none;
+}
+
+/* ==========================================================================
+   Stili Pagina Database (Supabase)
+   ========================================================================== */
+.page-db main.db-container {
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+  min-height: calc(100vh - 85px);
+  margin: 0 auto;
+  /* Posizionato più in alto come richiesto (padding ridotto a 2.2rem) */
+  padding: 2.2rem 2rem 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Fissa la posizione iniziale in alto: impedisce salti verticali dei blocchi */
+  justify-content: flex-start;
+  gap: 1.8rem;
+}
+
+.db-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  padding: 1.8rem 2.2rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.025);
+}
+
+.db-auth-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .db-auth-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.db-section-title {
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+  margin-bottom: 0.35rem;
+}
+
+.db-status-text {
+  font-size: 1.05rem;
+  color: #666;
+  font-style: italic;
+}
+
+.db-btn {
+  margin-top: 0;
+  padding: 0.55rem 1.8rem;
+  font-size: 1.05rem;
+}
+
+.db-data-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.db-btn-refresh {
+  margin-top: 0;
+  padding: 0.4rem 1.4rem;
+  font-size: 0.95rem;
+  background-color: #e5e0d6;
+  color: #1a1a1a;
+}
+
+.db-btn-refresh:hover {
+  background-color: #d8d3c8;
+}
+
+/* Transizione morbida di blur durante il caricamento (senza flash) */
+.db-data-container {
+  position: relative;
+  min-height: 120px;
+  border-radius: 6px;
+}
+
+.db-table-wrapper {
+  transition: filter 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: filter, opacity;
+}
+
+.db-table-wrapper.is-loading {
+  filter: blur(4px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Tabella editoriale in stile Garamond con testata nella palette ramato chiaro */
+.db-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(168, 93, 44, 0.14);
+  border-radius: 6px;
+  background-color: #ffffff;
+}
+
+.db-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+  font-size: 1.05rem;
+}
+
+.db-table thead {
+  /* Tonalità chiara e luminosa della stessa palette del ramato/ruggine (#a85d2c) */
+  background-color: #f7ede5;
+  border-bottom: 1px solid rgba(168, 93, 44, 0.18);
+}
+
+.db-table th {
+  padding: 0.85rem 1.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #733c1d;
+  white-space: nowrap;
+}
+
+.db-table td {
+  padding: 0.95rem 1.4rem;
+  color: #1a1a1a;
+  border-bottom: 1px solid rgba(168, 93, 44, 0.06);
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+
+.db-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.db-table tbody tr {
+  transition: background-color 0.18s ease;
+}
+
+.db-table tbody tr:hover {
+  background-color: #fbf6f2;
+}
+
+.cell-null {
+  color: #aaa;
+  font-style: italic;
+}
+
+.cell-json {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  background-color: #f3f2ef;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  color: #444;
+}
+
+/* Stati vuoti o di errore */
+.db-empty-state, .db-error-state {
+  padding: 2.8rem 2rem;
+  text-align: center;
+  background-color: #faf9f7;
+  border: 1px dashed rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+}
+
+.db-empty-title, .db-error-title {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 0.4rem;
+}
+
+.db-empty-desc, .db-error-desc {
+  font-size: 1rem;
+  color: #666;
+  font-style: italic;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.db-error-code {
+  margin-top: 1rem;
+  text-align: left;
+  background-color: #f1efea;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: monospace;
+  color: #a33;
+  overflow-x: auto;
 }
 
 /* ==========================================================================

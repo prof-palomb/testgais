@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database — Supabase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="page-galleria page-db">
+    <header class="galleria-header">
+      <a href="index.html" class="nav-back">Home</a>
+      <h1 class="galleria-title">Database</h1>
+      <span class="galleria-subtitle">Supabase & Google Auth</span>
+    </header>
+
+    <main class="db-container">
+      <section class="db-card">
+        <div class="db-auth-row">
+          <div>
+            <h2 class="db-section-title">Stato Autenticazione</h2>
+            <p id="auth-status" class="db-status-text">Inizializzazione sessione...</p>
+          </div>
+          <button id="auth-btn" class="btn-galleria db-btn">Accedi con Google</button>
+        </div>
+      </section>
+
+      <section class="db-card">
+        <div class="db-data-header">
+          <h2 class="db-section-title">Dati Tabella: testab</h2>
+          <button id="refresh-btn" class="btn-galleria db-btn-refresh">Ricarica</button>
+        </div>
+        <div id="data-container" class="db-data-container">
+          <div id="data-view" class="db-table-wrapper">
+            <!-- La vista tabulare viene iniettata qui -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Libreria ufficiale Supabase da CDN UMD -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Singolo file JS puro vanilla per gestione Supabase e OAuth -->
+    <script src="db.js"></script>
+  </body>
+</html>
